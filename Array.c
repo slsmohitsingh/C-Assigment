@@ -15,7 +15,7 @@
 
 
 /* Function to perform bubble sort in ascending order */
-int32_t i32bubbleSortAsc(int32_t i32A[], int32_t n) {
+int32_t vbubbleSortAsc(int32_t i32A[], int32_t n) {
     int32_t i32T;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n-1; j++) {
@@ -30,7 +30,7 @@ int32_t i32bubbleSortAsc(int32_t i32A[], int32_t n) {
 }
 
 /* Function to perform bubble sort in descending order*/
-int32_t i32bubbleSortDesc(int32_t i32A[], int32_t n) {
+int32_t vbubbleSortDesc(int32_t i32A[], int32_t n) {
     int32_t i32T;
     for (int i = 0; i <n; i++) {
         for (int j = 0; j < n-1; j++) {
@@ -67,6 +67,23 @@ int32_t i32Sumofeven(int32_t i32A[],int32_t n)
     }
     return i32s;
 }
+	
+	void vsetbits(int32_t i32A[],int32_t n)
+{
+	int32_t i;
+	for(i=0;i<n;i++)
+	{
+		if(i32A[i]%2==0)
+		{
+			i32A[i]=0;  /* Clear the set bit*/ 
+		}else{
+			i32A[i]=1; /* set the odd bit */
+			
+		}
+		
+	}
+
+}
 
 int main() {
     int32_t i32A[10];
@@ -78,14 +95,14 @@ int main() {
     }
 
     // Sort the array in ascending order
-    i32bubbleSortAsc(i32A, 10);
+    vbubbleSortAsc(i32A, 10);
     printf("Array sorted in ascending order: \n");
     for (int i = 0; i < 10; i++) {
         printf("%d ", i32A[i]);
     }
 
     // Sort the array in descending order
-    i32bubbleSortDesc(i32A, 10);
+    vbubbleSortDesc(i32A, 10);
     printf("\nArray sorted in descending order: \n");
     for (int i = 0; i < 10; i++) {
         printf("%d ", i32A[i]);
@@ -98,6 +115,10 @@ int main() {
     /* sum of all even value sorted in Array */
     int32_t evensum = i32Sumofeven(i32A,10);
     printf("\n sum of odd values arr: %d",evensum);
-    
-
+	
+    /*Set bit of odd position and clear bit of even position element*/
+	vsetbits(i32A,10);
+	for (int i = 0; i < 10; i++) {
+    printf("%d ", i32A[i]);}
 }
+
