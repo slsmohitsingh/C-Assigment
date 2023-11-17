@@ -1,0 +1,27 @@
+Enter AC control mode (0-Manual, 1-Open loop, 2-Closed loop): 0
+Enter Cooling range (20-100): 25
+Manual mode selected. Cooling range set to 25.00.
+
+
+Enter AC control mode (0-Manual, 1-Open loop, 2-Closed loop): 2
+Enter Cooling range (20-100): 29
+Enter Temperature input (0-100): 10
+Closed loop mode selected. Cooling range set to 29.00.
+
+
+Enter AC control mode (0-Manual, 1-Open loop, 2-Closed loop): 2
+Enter Cooling range (20-100): 55
+Enter Temperature input (0-100): 20
+Closed loop mode selected. Cooling range set to 55.00.
+
+
+Enter AC control mode (0-Manual, 1-Open loop, 2-Closed loop): 2
+Enter Cooling range (20-100): 28
+Enter Temperature input (0-100): 40
+Closed loop mode selected. Cooling range set to 80.00.
+
+
+Enter AC control mode (0-Manual, 1-Open loop, 2-Closed loop): 2
+Enter Cooling range (20-100): 72
+Enter Temperature input (0-100): 80
+Closed loop mode selected. Cooling range set to 100.00.
