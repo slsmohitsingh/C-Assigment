@@ -14,9 +14,9 @@
 struct person
 {
     char cname[50];
-    int32_t i32age;
+    int8_t i8age;
 };
-int main()
+void main()
 {
     struct person v_st;
     struct person *pptr;
@@ -24,11 +24,19 @@ int main()
     printf("Enter the name :");
     scanf("%s",pptr->cname);
     printf("Enter the age :");
-    scanf("%d",pptr->i32age);
+    scanf("%d",&pptr->i8age);
     
     printf(" person Details are under the below:\n");
-    printf("%s %d",pptr->cname,pptr->i32age);
+    printf("%s %d",pptr->cname,pptr->i8age);
 }
+/*
+OUTPUT :
+Enter the name :kohli
+Enter the age :35
+person Details are under the below:
+kohli 35
+*/
+
 
 /*!
  * ----------------------------------------------------------------------
@@ -45,12 +53,13 @@ int main()
 #include<stdio.h>
 #include<stdint.h>
 
-typedef struct {
+typedef struct 
+{
     int32_t i32data;
     int32_t *pptr;
 } MyStruct_st;
 
-int main() {
+void main() {
     MyStruct_st myData;
     int32_t value = 42;
 
@@ -62,6 +71,11 @@ int main() {
     printf("Data: %d\n", myData.i32data);
     printf("Value pointer: %d\n", *(myData.pptr));
 }
+/*
+OUTPUT :
+Data: 10
+Value pointer: 42
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -83,7 +97,7 @@ struct node {
     struct node* pptr;
 };
  
-int main()
+void main()
 {
     struct node ob1; /* Node1 */
  
@@ -106,6 +120,10 @@ int main()
     printf("%d ", ob1.pptr->i32data);
     printf("%d", ob1.pptr->cdata);
 }
+/*
+OUTPUT :
+30 40
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -125,14 +143,18 @@ struct student
 {  
    int32_t i32a;  
    char cb;  
-   float_t f32c;  
+   float f32c;  
 };  
-int main()  
+void main()  
 {  
    struct student stu_st; /* variable declaration of the student type */  
    /* Displaying the size of the structure student */
    printf("The size of the student structure is %ld", sizeof(stu_st));  
-}  
+} 
+/*
+OUTPUT :
+The size of the student structure is 12
+*/ 
 
 /*!
  * ----------------------------------------------------------------------
@@ -163,13 +185,18 @@ struct studentone
     int16_t i16s;
 };
  
-int main()
+void main()
 {
     struct student stu_st;
     struct studentone one_st;
     printf("size of student %ld ",sizeof(stu_st));
     printf("\nsize of studentone %ld",sizeof(one_st));
 }
+/*
+OUTPUT :
+size of student 12 
+size of studentone 8
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -187,26 +214,61 @@ int main()
 #include<stdio.h>  
 #include<string.h> 
 #include<stdint.h>
-struct student{    
-int32_t i32rollno;    
-char cname[10];    
+//#include<stdio_ext.h>
+#include<stdlib.h>
+struct student
+{    
+ int32_t i32rollno;    
+ char cname[10];    
 };    
-int main(){    
+void main()
+{    
 int32_t i;    
 struct student st[5];    
 printf("Enter Records of 5 students");    
-for(i=0;i<5;i++){    
-printf("\nEnter Rollno:");    
-scanf("%d",&st[i].i32rollno);    
+for(i=0;i<5;i++)
+{    
 printf("\nEnter Name:");    
-scanf("%s",st[i].cname);    
+scanf("%s",st[i].cname);  
+printf("Enter Rollno:");
+while(scanf("%d",&st[i].i32rollno)!=1)
+{
+    exit (0);
+}
+/*__fpurge(stdin);
+scanf("%d",&st[i].i32rollno); */   
 }    
 printf("\nStudent Information List:");    
-for(i=0;i<5;i++){    
+for(i=0;i<5;i++)
+{    
 printf("\nRollno:%d, Name:%s",st[i].i32rollno,st[i].cname);    
 }    
-     
-}  
+}
+/*
+OUTPUT :
+Enter Records of 5 students
+Enter Name:KOHLI
+Enter Rollno:35
+
+Enter Name:ROHIT
+Enter Rollno:36
+
+Enter Name:RAHUL
+Enter Rollno:29
+
+Enter Name:GILL
+Enter Rollno:23
+
+Enter Name:PANDYA
+Enter Rollno:30
+
+Student Information List:
+Rollno:35, Name:KOHLI
+Rollno:36, Name:ROHIT
+Rollno:29, Name:RAHUL
+Rollno:23, Name:GILL
+Rollno:30, Name:PANDYA
+*/  
 
 /*!
  * ----------------------------------------------------------------------
@@ -228,11 +290,15 @@ struct student
     char cname[20];
     int32_t i32roll;
 };
-int main()
+void main()
 {
     struct student v_st={"Mohit",880};
     printf("%s %d",v_st.cname,v_st.i32roll);
 }
+/*
+OUTPUT :
+Mohit 880
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -254,11 +320,15 @@ typedef struct student
     char cname[20];
     int32_t i32roll;
 }stu_st;
-int main()
+void main()
 {
     stu_st v_st={"Mohit",880};
     printf("%s %d",v_st.cname,v_st.i32roll);
 }
+/*
+OUTPUT :
+Mohit 880
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -272,57 +342,26 @@ int main()
 .
  * ----------------------------------------------------------------------
  */ 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+/*
+OUTPUT :
+Enter the number of persons: 3
+Enter name for person: KOHLI
+Enter age for person:  35
+Enter name for person: ROHIT
+Enter age for person:  36
+Enter name for person: GILL
+Enter age for person:  23
 
-/* Define the structure*/
+Details of persons:
+Name: KOHLI
+Age: 35
 
-struct Person
-{
-    char cname[50];
-    int32_t i32age;
-};
+Name: ROHIT
+Age: 36
 
-int main()
-{
-    int32_t i32n; 
-    printf("Enter the number of persons: ");
-    scanf("%d", &i32n);
-    
-    /* Dynamically allocate memory for the structure array*/
-    
-    struct Person *ppersonArray = (struct Person *)malloc(i32n * sizeof(struct Person));
-    if (ppersonArray == NULL) 
-	{
-        printf("Memory allocation failed\n");
-    }
-
-    /* Input data for each person*/
-    
-    for (int32_t i = 0; i < i32n; i++) 
-    {
-        printf("Enter name for person: ");
-        scanf("%s", ppersonArray[i].cname);
-        printf("Enter age for person:  ");
-        scanf("%d", &ppersonArray[i].i32age);
-    }
-
-
-    /* Display information for each person*/
-    
-    printf("\nDetails of persons:\n");
-    for (int32_t i = 0; i < i32n; i++)
-    {
-        printf("Name: %s\n", ppersonArray[i].cname);
-        printf("Age: %d\n", ppersonArray[i].i32age);
-        printf("\n");
-    }
-
-    /* Free the dynamically allocated memory*/
-   free(ppersonArray);
-}
-
+Name: GILL
+Age: 23
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -338,45 +377,9 @@ function, perform the operation on it (structure member) and print values in the
  * ----------------------------------------------------------------------
  */ 
  
-#include <stdio.h>
-#include <stdint.h>
-
-struct Point
-{
-    int32_t i32x;
-    int32_t i32y;
-};
-
-/* Function to perform an operation on a structure (call by value) */
-void modifyStructByValue(struct Point p_st) {
-    p_st.i32x = 10;  /* Modify the structure member */
-    p_st.i32y = 20;
-}
-
-/* Function to perform an operation on a structure (call by reference)*/
-void modifyStructByReference(struct Point *p) {
-    p->i32x = 30;  /* Modify the structure member through the pointer */
-    p->i32y = 40;
-}
-
-int main() {
-    /*Declare a structure variable*/
-    struct Point myPoint_st = {1, 2};
-
-    /* Display the initial values*/
-    printf("Initial values: x = %d, y = %d\n", myPoint_st.i32x, myPoint_st.i32y);
-
-    /* Call the function with call by value*/
-    modifyStructByValue(myPoint_st);
-
-    /* Display the values after call by value*/
-    printf("After call by value: x = %d, y = %d\n", myPoint_st.i32x, myPoint_st.i32y);
-
-    /* Call the function with call by reference */
-    modifyStructByReference(&myPoint_st);
-
-    /* Display the values after call by reference*/
-    printf("After call by reference: x = %d, y = %d\n", myPoint_st.i32x, myPoint_st.i32y);
-
-   
-}
+/*
+OUTPUT :
+Initial values: x = 1, y = 2
+After call by value: x = 1, y = 2
+After call by reference: x = 30, y = 40
+*/

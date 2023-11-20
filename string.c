@@ -12,18 +12,20 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdint.h>
-int main()
+void main()
 {
-        char cs[]={'K','u','s','h','a','l'};
-        int32_t i;
+        char cs[]={'I','N','D','I','A'};
+        int8_t i;
         i=strlen(cs);
         for(i=i-1;i>=0;i--)
         {
-                printf("%c",cs[i]);
-                printf("\n");
-
-        }
+                printf("%c ",cs[i]);
+               // printf("\n");
+	    }
 }
+
+/* OUTPUT:
+ A I D N I */
 
 /*!
  * ----------------------------------------------------------------------
@@ -36,20 +38,60 @@ int main()
  * ----------------------------------------------------------------------
  */ 
 
-#include<stdio.h>
+/*#include<stdio.h>
 #include<string.h>
 #include<stdint.h>
-int main()
+void main()
 {
-        char cs[]="kushal panchal";
-        int32_t i,i32count=0;
+        char cs[]="India Wale";
+        int8_t i,i8count=0;
 
         for(i=0;cs[i];i++)
         {
-                i32count++;
+                i8count++;
         }
-        printf("%d",i32count);
+        printf("%d",i8count);
+}*/
+#include <stdio.h>
+#include <stdint.h>
+void main()
+ {
+    char cs[50];
+    int8_t i8count = 0,i;
+    int8_t i8isWord = 0; 
+
+    printf("Enter a string: ");
+    scanf("%[^\n]s", cs);
+
+
+    for ( i = 0; cs[i] != '\0'; i++) 
+    {
+        if (cs[i] == ' ' || cs[i] == '\t' || cs[i] == '\n')
+        {
+    
+            if (i8isWord) 
+            {
+                i8count++;
+                i8isWord = 0; 
+            }
+        } 
+        else 
+        {
+            i8isWord = 1;
+        }
+    }
+    if (i8isWord)
+    {
+        i8count++;
+    }
+
+    printf("Total number of words: %d\n", i8count);
 }
+
+/* OUTPUT :
+Enter a string: INDIA WON THE WORLDCUP
+Total number of words: 4 */
+
 
 /*!
  * ----------------------------------------------------------------------
@@ -62,26 +104,35 @@ int main()
  * ----------------------------------------------------------------------
  */ 
  
- #include<stdio.h>
+#include<stdio.h>
 #include<string.h>
 #include<stdint.h>
-int main()
+void main()
 {
-        char cs[]="Kushal panchal sir 123...";
-        int32_t i,i32alpha=0,i32digits=0,i32sp=0;
+        char cs[]="Come on india come on virat @18...";
+        int8_t i,i8alpha=0,i8digits=0,i8sp=0,i8count=0;
         for(i=0;cs[i];i++)
         {
                 if(cs[i]>=65 && cs[i]<=90 || cs[i]>=97 && cs[i]<=122)
-                        i32alpha++;
+                        i8alpha++;
                 else if(cs[i]>=48 && cs[i]<=57)
-                        i32digits++;
+                        i8digits++;
                 else
-                        i32sp++;
+                        i8sp++;
         }
-        printf("Alphabets %d\n",i32alpha);
-        printf("digits %d\n",i32digits);
-        printf("special %d\n",i32sp);
+        i8count=i8alpha+i8digits+i8sp;
+        printf("Alphabets %d\n",i8alpha);
+        printf("digits %d\n",i8digits);
+        printf("special %d\n",i8sp);
+        printf("Total %d\n",i8count);
 }
+
+/* OUTPUT :
+Alphabets 22
+digits 2
+special 10
+Total 34 */
+
 
 /*!
  * ----------------------------------------------------------------------
@@ -94,13 +145,13 @@ int main()
  * ----------------------------------------------------------------------
  */ 
  
- #include<stdio.h>
+#include<stdio.h>
 #include<string.h>
 #include<stdint.h>
-int main()
+void main()
 {
         char csrc[30],cdest[30];
-        int32_t i;
+        int8_t i;
         printf("Enter the String :");
         scanf("%s",csrc);
      /* strcpy(cdest,csrc);*/
@@ -112,6 +163,15 @@ int main()
         printf("Source: %s\n",csrc);
         printf("Destination: %s\n",cdest);
 }
+
+/* OUTPUT :
+Enter the String :virat kholi
+Source: virat kholi
+Destination: virat kholi */
+
+
+
+
 
 
 /*!
@@ -128,31 +188,66 @@ int main()
 #include<stdio.h>
 #include<string.h>
 #include<stdint.h>
-int main()
+
+void main() 
 {
-        char cs[100];
-        int32_t i,j;
-        int32_t count=0;
-        int32_t i32maxcount=0;
-        char i32maxrepeatedchar;
-        printf("Enter the string");
-        scanf("%s",cs);
-        for(i=0;cs[i];i++)
-        {
-                count=0;
-                for(j=0;cs[j];j++)
-                {
-                        if(cs[i]==cs[j])
-                                count++;
-                }
-        
-        if(i32maxcount<count)
-        {
-                i32maxcount=count;
-        i32maxrepeatedchar=cs[i];
+    char cs[100];
+    int8_t i, j;
+    int8_t count = 0;
+    int8_t i8maxcount = 1;
+    char i8maxrepeatedchars[100];
+    int8_t repetitionFound = 0; 
+
+    printf("Enter the string :");
+    scanf("%s", cs);
+
+    for (i = 0; cs[i]; i++)
+		{
+        count = 1;
+        for (j = i + 1; cs[j]; j++)
+			{
+            if (cs[i] == cs[j])
+                count++;
         }
+
+        if (i8maxcount < count) 
+		{
+            i8maxcount = count;
+            i8maxrepeatedchars[0] = cs[i];
+            repetitionFound = 1; 
+        } 
+		else if (i8maxcount == count)
+			{
+            i8maxrepeatedchars[repetitionFound] = cs[i];
+            repetitionFound++;
         }
-        printf("%d %c",i32maxcount,i32maxrepeatedchar);
+    }
+
+    if (repetitionFound && i8maxcount > 1)
+		{
+        printf("Maximum occurrence(s): ");
+        for (i = 0; i < repetitionFound; i++) 
+		{
+            printf("%c ", i8maxrepeatedchars[i]);
+        }
+        printf("\nCount: %d", i8maxcount);
+    } 
+	else
+		{
+        printf("No occurrence found");
+    }
+}
 
 
- 
+/*
+ OUTPUT :
+ Enter the string :aaabbbccc
+Maximum occurrence(s): a b c 
+Count: 3
+
+Enter the string :virat
+No occurrence found
+ */
+
+
+

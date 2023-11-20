@@ -9,16 +9,21 @@
  * ----------------------------------------------------------------------
  */ 
  
- #include <stdio.h>
+#include <stdio.h>
 #include <stdint.h>
 #define SQUARE(x) ((x) * (x))
 
-int main() {
-    int32_t i32num = 5;
-    int32_t i32result = SQUARE(i32num);
-    printf("The square of %d is %d\n", i32num, i32result);
+void main() {
+    int8_t i8num = 5;
+    int8_t i8result = SQUARE(i32num);
+    printf("The square of %d is %d\n", i8num, i8result);
     
 }
+/*
+OUTPUT:
+The square of 5 is 25
+*/
+
 
 /*!
  * ----------------------------------------------------------------------
@@ -38,14 +43,17 @@ int main() {
 
 #define ADD_AND_SQUARE(a, b) SQUARE(ADD(a, b))
 
-int main() {
-    int32_t i32num1 = 5;
-    int32_t i32num2 = 3;
-    int32_t i32result = ADD_AND_SQUARE(i32num1, i32num2);
+void main() {
+    int8_t i8num1 = 5;
+    int8_t i8num2 = 3;
+    int8_t i8result = ADD_AND_SQUARE(i8num1, i8num2);
 
-    printf("The result is %d\n", i32result);
-
+    printf("The result is %d\n", i8result);
 }
+/*
+OUTPUT:
+The result is 64
+*/
 
 /*!
  * ----------------------------------------------------------------------
@@ -61,20 +69,24 @@ int main() {
 #include <stdio.h>
 #include <stdint.h>
 #define DEBUG
-int main()
+void main()
 {
-    int32_t i32x = 10;
-    int32_t i32y = 5;
+    int8_t i8x = 10;
+    int8_t i8y = 5;
 
 #ifdef DEBUG
     printf("Debug mode is enabled.\n");
-    printf("x = %d, y = %d\n", i32x, i32y);
+    printf("x = %d, y = %d\n", i8x, i8y);
 #endif
 
-    int32_t i32result = i32x + i32y;
+    int32_t i8result = i8x + i8y;
 
-    printf("The result is: %d\n", i32result);
-
-   
+    printf("The result is: %d\n", i8result);
 }
+/*
+OUTPUT:
+Debug mode is enabled.
+x = 10, y = 5
+The result is: 15
+*/
 
